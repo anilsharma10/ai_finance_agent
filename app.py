@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import boto3
 import json
 import os
@@ -11,7 +12,8 @@ def setup_page_config():
     st.set_page_config(
         page_title="Financial Planner",
         page_icon="💰",
-        layout="wide"
+        layout="wide",
+        initial_sidebar_state="collapsed"
     )
 
 def load_custom_styles():
@@ -101,7 +103,7 @@ def render_header():
     st.title("AI Personal Finance Planner 💰")
     st.markdown("""
     <div style="text-align: center; margin: 20px 0;">
-        <h3 style="color: #1e3a8a; font-weight: 700; margin: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px;">
+        <h3 style="font-weight: 700; margin: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px;">
             💎 Your Financial Success Starts Here
         </h3>
     </div>
@@ -150,12 +152,7 @@ def clean_financial_report(plan):
     
     return result
 
-def display_financial_report(plan):
-    clean_plan = clean_financial_report(plan)
-    
-    st.markdown("---")
-    st.markdown("## 💡 Your Personalized Financial Plan")
-    st.markdown(f'<div class="financial-report">{clean_plan}</div>', unsafe_allow_html=True)
+
 
 def main():
     setup_page_config()
@@ -181,8 +178,11 @@ def main():
                 prompt = build_financial_prompt(financial_goals, current_situation)
                 plan = generate_financial_plan(bedrock_client, prompt)
                 status.update(label="✅ Plan generated successfully!", state="complete")
-            
-            display_financial_report(plan)
+                
+                # Display the plan inside the status
+                st.markdown("---")
+                st.markdown("## 💡 Your Personalized Financial Plan")
+                st.markdown(f'<div class="financial-report">{clean_financial_report(plan)}</div>', unsafe_allow_html=True)
             
         except Exception as e:
             st.error(f"❌ Error generating financial plan: {str(e)}")

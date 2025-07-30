@@ -1,15 +1,5 @@
-/* Main background and layout */
-.main {
-    background: #f8fafc;
-    min-height: 100vh;
-}
-
-.stApp {
-    background: #f8fafc;
-}
-
+/* basic styling */
 .main .block-container {
-    background: #ffffff;
     border-radius: 8px;
     padding: 2rem;
     margin: 1rem;
@@ -17,20 +7,17 @@
     border: 2px solid #1e3a8a;
 }
 
-/* Typography */
+/* text */
 h1 {
-    color: #1e3a8a;
     text-align: center;
     font-weight: 700;
     margin-bottom: 1rem;
     font-size: 2.2rem;
 }
 
-/* Form elements */
+/* forms */
 .stTextInput > div > div > input,
 .stTextArea > div > div > textarea {
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid #e0e6ed;
     border-radius: 10px;
     padding: 12px 16px;
     font-size: 16px;
@@ -41,14 +28,10 @@ h1 {
 .stTextArea > div > div > textarea:focus {
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-    background: white;
 }
 
-/* Buttons */
+/* buttons */
 .stButton > button {
-    background: #1e3a8a;
-    color: white;
-    border: none;
     border-radius: 6px;
     padding: 12px 24px;
     font-size: 16px;
@@ -58,11 +41,53 @@ h1 {
 }
 
 .stButton > button:hover {
-    background: #1e40af;
+    opacity: 0.9;
     box-shadow: 0 4px 8px rgba(30, 58, 138, 0.3);
 }
 
-/* YOYO button animation */
+/* layout */
+.main {
+    min-height: 100vh;
+}
+
+/* text */
+h1 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-size: 2.2rem;
+}
+
+/* forms */
+.stTextInput > div > div > input,
+.stTextArea > div > div > textarea {
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.stTextInput > div > div > input:focus,
+.stTextArea > div > div > textarea:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* buttons */
+.stButton > button {
+    border-radius: 6px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(30, 58, 138, 0.2);
+}
+
+.stButton > button:hover {
+    opacity: 0.9;
+    box-shadow: 0 4px 8px rgba(30, 58, 138, 0.3);
+}
+
 .stButton > button:active {
     animation: yoyo-bounce 0.6s ease-in-out;
 }
@@ -75,17 +100,17 @@ h1 {
     100% { transform: scale(1); }
 }
 
-/* Custom glowing loading indicator */
+/* loading */
 .loading-glow {
     display: inline-flex;
     align-items: center;
     gap: 10px;
     padding: 12px 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--text-primary) 0%, #764ba2 100%);
     color: white;
     border-radius: 25px;
     font-weight: 600;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
     animation: glow-pulse 2s ease-in-out infinite;
 }
 
@@ -93,7 +118,7 @@ h1 {
     content: '';
     width: 12px;
     height: 12px;
-    background: #ffffff;
+    background: white;
     border-radius: 50%;
     animation: glow-dot 1.5s ease-in-out infinite;
 }
@@ -121,10 +146,9 @@ h1 {
     }
 }
 
-/* Financial report styling */
+/* report */
 .financial-report {
     font-family: 'Segoe UI', sans-serif;
-    background: #ffffff;
     padding: 25px;
     border-radius: 8px;
     border-left: 4px solid #1e3a8a;
@@ -139,7 +163,6 @@ h1 {
 }
 
 .financial-report h1 {
-    color: #1e3a8a;
     border-bottom: 2px solid #1e3a8a;
     padding-bottom: 15px;
     font-weight: 700;
@@ -148,7 +171,6 @@ h1 {
 }
 
 .financial-report h2 {
-    color: #374151;
     margin-top: 20px;
     margin-bottom: 8px;
     font-weight: 600;
@@ -157,15 +179,13 @@ h1 {
 }
 
 .financial-report code {
-    background: linear-gradient(135deg, #e9ecef 0%, #f8f9fa 100%);
     padding: 4px 8px;
     border-radius: 5px;
     font-family: 'Courier New', monospace;
-    border: 1px solid #dee2e6;
+    border: 1px solid #e0e6ed;
 }
 
 .financial-report pre {
-    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
     border: 2px solid #e0e6ed;
     border-radius: 10px;
     padding: 20px;
@@ -196,10 +216,10 @@ h1 {
     word-spacing: 0.1em;
 }
 
-/* Loading spinner - smaller and less intrusive */
+/* spinner */
 .stSpinner > div {
-    border: 2px solid #f3f3f3;
-    border-top: 2px solid #667eea;
+    border: 2px solid var(--border-color);
+    border-top: 2px solid var(--text-primary);
     border-radius: 50%;
     width: 24px;
     height: 24px;
@@ -211,7 +231,7 @@ h1 {
     100% { transform: rotate(360deg); }
 }
 
-/* Responsive design */
+/* mobile */
 @media (max-width: 768px) {
     .main .block-container {
         margin: 0.5rem;
